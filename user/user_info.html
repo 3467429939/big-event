@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="/day11/assets/css/user_info.css">
+    <link rel="stylesheet" href="/day11/assets/lib/layui/css/layui.css">
+</head>
+<body>
+    <div class="layui-card">
+        <div class="layui-card-header">用户信息</div>
+        <div class="layui-card-body">
+            <form class="layui-form" lay-filter="form_userinfo">
+                <div class="layui-form-item">
+                  <label class="layui-form-label">登录名称</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="username" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                    <input type="hidden" name="id" value="">
+                    <!-- 表单隐藏域，用来设置id -->
+                    <label class="layui-form-label">昵称</label>
+                    <div class="layui-input-block">
+                      <input type="text" name="nickname" required  lay-verify="required | nickname" placeholder="请输入昵称" autocomplete="off" class="layui-input">
+                    </div>
+                  </div>
+                  <div class="layui-form-item">
+                    <label class="layui-form-label">登录邮箱</label>
+                    <div class="layui-input-block">
+                      <input type="text" name="email" required  lay-verify="required | email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                    </div>
+                  </div>
+                  <div class="layui-form-item">
+                    <div class="layui-input-block">
+                      <button  class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                      <button type="reset" id="btn_reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                  </div> 
+        </form>
+        </div>
+      </div>
+          
+</body>
+<!-- 引入所有的js文件 先引入第三方的，在引入自己的 -->
+<script src="/day11/assets/lib/jquery.js"></script>
+<script src="/day11/assets/lib/layui/layui.all.js"></script>
+<script src="/day11/assets/js/baseAPI.js"></script>
+<script src="/day11/assets/js/user_info.js"></script>
+</html>
