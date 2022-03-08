@@ -5,8 +5,93 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/day11/assets/css/article/art-list.css">
+    <link rel="stylesheet" href="/day11/assets/lib/layui/css/layui.css">
 </head>
 <body>
-    
+    <div class="layui-card">
+        <div class="layui-card-header">文章列表</div>
+        <div class="layui-card-body">
+          <!-- 筛选 -->
+          <form class="layui-form" action="">
+            <div class="layui-form-item layui-inline">
+              <label class="layui-form-label">文章分类</label>
+              <div class="layui-input-block">
+                <select name="cate_id">
+                    <option value="">所有分类</option>
+                  </select>                       
+              </div>
+            </div>
+          <!-- 筛选 -->
+          <form class="layui-form" id="btn-search">
+            <div class="layui-form-item layui-inline">
+              <label class="layui-form-label">所有状态</label>
+              <div class="layui-input-block">
+                <select name="state">
+                    <option value="">所有状态</option>
+                    <option value="已发布">已发布</option>
+                    <option value="草稿">草稿</option>
+                  </select>                       
+              </div>
+            </div>
+            <!-- 按钮 -->
+            <div class="layui-form-item layui-inline">
+                <div class="layui-input-block">
+                  <button class="layui-btn"  lay-submit lay-filter="formDemo">筛选</button>
+                </div>
+                </div>
+            </form>
+          <!-- 表格 -->
+          <table class="layui-table">
+            <colgroup>
+              <col>
+              <col  width="150">
+              <col width="180">
+              <col width="150">
+              <col width="150">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>文章列表</th>
+                <th>分类</th>
+                <th>发表时间</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr> 
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          <!-- 分页 -->
+          <div id="page"></div>
+        </div>
+      </div>
+      <!-- 文章类型 -->
+      <script type="text/html" id="tpl-cate">
+        <option value="">所有分类</option>
+          {{each data}}
+          <option value="{{$value.Id}}">{{$value.name}}</option>
+          {{/each}}
+      </script>
+      <!-- 文章列表数据 -->
+      <script type="text/html" id="hoyo">
+        {{each data}}
+        <tr>
+          <td>{{$value.title}}</td>
+          <td>{{$value.cate_name}}</td>
+          <td>{{$value.pub_data | dataFormat }}</td>
+          <td>{{$value.state}}</td>
+          <td>
+            <button type="button" class="layui-btn layui-btn layui-btn-xs">编辑</button>
+            <button type="button" data-id="{{$value.Id}}" class="btn-del layui-btn layui-btn-danger layui-btn layui-btn-xs">删除</button>
+          </td>
+        </tr>
+        {{/each}}
+      </script>
 </body>
+<script src="/day11/assets/lib/jquery.js"></script>
+<script src="/day11/assets/lib/template-web.js"></script>
+<script src="/day11/assets/lib/layui/layui.all.js"></script>
+<script src="/day11/assets/js/baseAPI.js"></script>
+<script src="/day11/assets/js/article/art-list.js"></script>
 </html>
